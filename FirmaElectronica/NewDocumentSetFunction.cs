@@ -25,7 +25,7 @@ namespace FirmaElectronica
             try
             {
                 string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-                RootObject data = JsonConvert.DeserializeObject<RootObject>(requestBody);
+                RootNewDocumentSet data = JsonConvert.DeserializeObject<RootNewDocumentSet>(requestBody);
                 if (data != null)
                 {
 

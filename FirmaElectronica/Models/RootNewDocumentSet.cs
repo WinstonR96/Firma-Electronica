@@ -1,6 +1,6 @@
 ﻿namespace FirmaElectronica.Models
 {
-    public class RootObject
+    public class RootNewDocumentSet
     {
         public AuthToken AuthToken { get; set; }
         public NewDocumentSet NewDocumentSet { get; set; }

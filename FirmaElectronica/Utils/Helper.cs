@@ -7,7 +7,7 @@ namespace FirmaElectronica.Utils
 {
     public static class Helper
     {
-        public static ObjectDll CastData(RootObject data)
+        public static ObjectDll CastData(RootNewDocumentSet data)
         {
             ObjectDll objectDll = new ObjectDll();
             
