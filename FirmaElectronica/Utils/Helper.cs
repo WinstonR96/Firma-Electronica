@@ -34,7 +34,7 @@ namespace FirmaElectronica.Utils
                     {
                         Nombre = recipients[i].RecipientName,
                         Cedula = recipients[i].RecipientIdCard,
-                        Telefono = recipients[i].RecipientCellPhone,
+                        Telefono = "+57"+recipients[i].RecipientCellPhone,
                         Email = recipients[i].RecipientMail,
                         MetodoFirma = (MetodoFirma)Enum.Parse(typeof(MetodoFirma), itemRecipients[i].RequestedAction),
                         InfoRecuadroFirma = new RecuadroFirma()

@@ -33,8 +33,8 @@ namespace FirmaElectronica
                     string mensaje = "";
                     string docSetId = "1";
                     Response response = new Response();
-                    bool res = true;
-                    //bool res = FirmaElectronicaOnBase.FirmaElectronica.NewDocumentSet(objectDll.senderEmail, objectDll.authToken, objectDll.docSetName, objectDll.daysRemainder, objectDll.daysExpiration, objectDll.pdfFileName, objectDll.pdfB64, objectDll.destinatarios, out mensaje, out docSetId);
+                    //bool res = true;
+                    bool res = FirmaElectronicaOnBase.FirmaElectronica.NewDocumentSet(objectDll.senderEmail, objectDll.authToken, objectDll.docSetName, objectDll.daysRemainder, objectDll.daysExpiration, objectDll.pdfFileName, objectDll.pdfB64, objectDll.destinatarios, out mensaje, out docSetId);
                     if (res)
                     {
                         response.exitoso = res;
