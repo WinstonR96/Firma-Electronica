@@ -8,6 +8,8 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using FirmaElectronica.Models;
 using System;
+using FirmaElectronica.Utils;
+using FirmaElectronica.Models.Response;
 
 namespace FirmaElectronica
 {
@@ -26,22 +28,37 @@ namespace FirmaElectronica
                 RootObject data = JsonConvert.DeserializeObject<RootObject>(requestBody);
                 if (data != null)
                 {
-                    return new JsonResult(data);
+
+                    ObjectDll objectDll = Helper.CastData(data);
+                    string mensaje = "";
+                    string docSetId = "1";
+                    Response response = new Response();
+                    bool res = true;
+                    //bool res = FirmaElectronicaOnBase.FirmaElectronica.NewDocumentSet(objectDll.senderEmail, objectDll.authToken, objectDll.docSetName, objectDll.daysRemainder, objectDll.daysExpiration, objectDll.pdfFileName, objectDll.pdfB64, objectDll.destinatarios, out mensaje, out docSetId);
+                    if (res)
+                    {
+                        response.exitoso = res;
+                        response.docSetId = docSetId;
+                        response.mensaje = "Se envió el documento a firmar";
+                        return (ActionResult)new OkObjectResult(response);
+                    }
+                    else
+                    {
+                        response.exitoso = res;
+                        response.docSetId = docSetId;
+                        response.mensaje = "No se envió el documento a firmar";
+                        return (ActionResult)new OkObjectResult(response);
+                    }
                 }
                 else
                 {
-                    return new BadRequestObjectResult("Please pass a data in the request body");
+                    return new BadRequestObjectResult("Por favor ingrese información en el body");
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return new BadRequestObjectResult(ex);
             }
-
-            //return name != null
-            //    ? (ActionResult)new OkObjectResult($"Hello, {name}")
-            //    : new BadRequestObjectResult("Please pass a name on the query string or in the request body");
-
         }
     }
 }
