@@ -3,6 +3,6 @@
     public class RootGetDocumentSet
     {
         public AuthToken AuthToken { get; set; }
-        public GetDocumentSet NewDocumentSet { get; set; }
+        public GetDocumentSet GetDocumentSet { get; set; }
     }
 }
