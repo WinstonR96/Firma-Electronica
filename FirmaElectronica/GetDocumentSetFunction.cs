@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using FirmaElectronica.Models;
 using System;
+using FirmaElectronicaOnBase;
 
 namespace FirmaElectronica
 {
@@ -24,7 +25,11 @@ namespace FirmaElectronica
                 RootGetDocumentSet data = JsonConvert.DeserializeObject<RootGetDocumentSet>(requestBody);
                 if(data != null)
                 {
-                    return new JsonResult(data);
+                    string token = data.AuthToken.Token;
+                    int docSetId = int.Parse(data.GetDocumentSet.DocumentSetId);
+                    bool sendDocument = data.GetDocumentSet.SendDocument;
+                    RespuestaGetDocumentSet respuestaGetDocumentSet = FirmaElectronicaOnBase.FirmaElectronica.GetDocumentSet(token, docSetId, sendDocument);
+                    return new OkObjectResult(respuestaGetDocumentSet);
                 }
                 else
                 {
